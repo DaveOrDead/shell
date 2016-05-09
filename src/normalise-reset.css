@@ -664,19 +664,7 @@ progress {
  * https://davidwalsh.name/input-shadows-ipad
  */
 
-.target-ios input[type="text"],
-.target-ios input[type="search"],
-.target-ios input[type="tel"],
-.target-ios input[type="url"],
-.target-ios input[type="email"],
-.target-ios input[type="password"],
-.target-ios input[type="month"],
-.target-ios input[type="week"],
-.target-ios input[type="time"],
-.target-ios input[type="date"],
-.target-ios input[type="datetime"],
-.target-ios input[type="datetime-local"],
-.target-ios input[type="number"],
+:--textual-inputs,
 .target-ios textarea {
     -webkit-appearance: caret;
 }

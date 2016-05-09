@@ -143,8 +143,7 @@
 
 .l-grid__item {
     flex-basis: auto; /* [1] */
-    padding-right: var(--rem);
-    padding-left: calc(var(--rem) * var(--shell-g-spacing-base)); /* [2] */
+    padding-left: calc(var(--shell-g-spacing-base) / var(--shell-g-font-size) * 1rem); /* [2] */
     width: 100%; /* [3] */
 }
 
@@ -239,7 +238,7 @@
 
 /* Base */
 .l-grid--gutter-vertical-base > .l-grid__item {
-    margin-bottom: var(--shell-g-spacing-base);
+    margin-bottom: calc(var(--shell-g-spacing-base) / var(--shell-g-font-size) * 1rem);
 }
 
 /* Decrease */
