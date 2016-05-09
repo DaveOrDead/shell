@@ -1,0 +1,520 @@
+/* ============================================================================
+   SETTINGS
+   ========================================================================= */
+
+
+/**
+ * All of Shell's settings (Sass variables).
+ *
+ * The settings are broken into two categories:
+ *
+ * - "Global".....settings for the entire library.
+ * - "Local"......settings for a particular partial.
+ *
+ * N.B. usually "Local" settings exist in their relevant partial but we combine
+ * them for Shell to make them easier to override. It's easier as you can
+ * override all of the settings in the one place—typically in a
+ * "_settings.scss" partial—compared to overriding "Local" settings above
+ * their relevant partial within the master stylesheet, like so:
+ *
+   --shell-apply-osx-font-smoothing: true;
+   --shell-apply-link-transition: false;
+   @import "[library/path]/base";
+
+   --shell-grid-gutter: 24;
+   @import "[library/path]/grid";
+ *
+ * The above set up is more cumbersome to maintain due to "Local" settings
+ * being dispersed throughout the master stylesheet plus the master stylesheet
+ * should only contain Sass partial imports.
+ *
+ * Having all settings together in the same Sass partial makes life easier for
+ * consumers of Shell.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * All settings start with a global namespace: `--shell` followed by one
+ * hyphen, like this:
+ *
+   --shell-
+ *
+ * "Global" settings include a letter "g" to easily identify them, like so:
+ *
+   --shell-g-
+ *
+ * "Local" settings include the name of its section to easily identify them, so
+ * settings for the "Base" and "Grid" sections would be formatted like this:
+ *
+   --shell-base-
+   --shell-grid-
+ *
+ * The `--shell` namespace prevents your project settings and Shell's settings
+ * from clashing with each other, and allows you to easily see what is
+ * coming from Shell and what isn't.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * CONTENTS:
+ *
+ * 1.  Base number (Global)
+ * 2.  Colours (Global)
+ * 3.  Typography (Global)
+ * 4.  Spacing (Global)
+ * 5.  Breakpoints (Global)
+ * 6.  Z-Index system (Global)
+ * 7.  HiDPI units (Global)
+ * 8.  HTML textual `input`s (Global)
+ * 9.  Base (Local)
+ * 10. Container (Local)
+ * 11. Grid (Local)
+ * 12. Helpers (Local)
+ */
+
+
+:root {
+
+/* 1. Base number (Global)
+   ========================================================================= */
+
+/**
+ * The baseline number from which everything else is derived.
+ */
+
+--shell-g-base-number: 16;
+
+
+
+
+/* 2. Colours (Global)
+   ========================================================================= */
+
+/**
+ * Black and white.
+ */
+
+--shell-g-color-white: #fff;
+
+--shell-g-color-black: #000;
+
+
+/**
+ * Base text.
+ */
+
+--shell-g-color-text-base: #434d5d;
+
+
+/**
+ * Links.
+ */
+
+--shell-g-color-link: #19a9e5;
+
+--shell-g-color-link-hover: var(--shell-g-color-link);
+
+--rem: 1rem;
+
+
+/* 3. Typography (Global)
+   ========================================================================= */
+
+/**
+ * The scale based on `--shell-g-base-number` being 16:
+ *
+ * Decrease: 14, 13, 12
+ * Increase: 18, 24, 28, 32, 40, 48, 56, 72
+ */
+
+--shell-g-font-size: var(--shell-g-base-number);
+
+/* Decrease */
+--shell-g-font-size-small: calc(var(--shell-g-font-size) - 2);
+
+--shell-g-font-size-x-small: calc(var(--shell-g-font-size) - 3);
+
+--shell-g-font-size-2x-small: calc(var(--shell-g-font-size) - 4);
+
+/* Increase */
+--shell-g-font-size-large: calc(var(--shell-g-font-size) + 2);
+
+--shell-g-font-size-x-large: calc(var(--shell-g-font-size) / 2 * 3);
+
+--shell-g-font-size-2x-large: calc(var(--shell-g-font-size) / 2 * 3.5);
+
+--shell-g-font-size-3x-large: calc(var(--shell-g-font-size) / 2 * 4);
+
+--shell-g-font-size-4x-large: calc(var(--shell-g-font-size) / 2 * 5);
+
+--shell-g-font-size-5x-large: calc(var(--shell-g-font-size) / 2 * 6);
+
+--shell-g-font-size-6x-large: calc(var(--shell-g-font-size) / 2 * 7);
+
+--shell-g-font-size-7x-large: calc(var(--shell-g-font-size) / 2 * 9);
+
+
+/**
+ * Line height.
+ */
+
+--shell-g-line-height: 1.5;
+
+
+/**
+ * Families.
+ */
+
+/* Base */
+--shell-g-font-family-base: 'Helvetica Neue', sans-serif;
+
+/* Mono-space */
+--shell-g-font-family-monospace: monospace, monospace;
+
+
+/**
+ * Weights.
+ */
+
+--shell-g-font-weight-normal: 400;
+
+--shell-g-font-weight-light: 300;
+
+--shell-g-font-weight-bold: 700;
+
+
+
+
+/* 4. Spacing (Global)
+   ========================================================================= */
+
+/**
+ * The scale based on `--shell-g-base-number` being 16:
+ *
+ * Decrease: 12, 8, 4
+ * Increase: 24, 32, 40, 48, 56, 72, 96
+ */
+
+--shell-g-spacing-base: var(--shell-g-base-number);
+
+/* Decrease */
+--shell-g-spacing-small: calc(var(--shell-g-spacing-base) - 4);
+
+--shell-g-spacing-x-small: calc(var(--shell-g-spacing-base) / 2);
+
+--shell-g-spacing-2x-small: calc(var(--shell-g-spacing-base) / 4);
+
+/* Increase */
+--shell-g-spacing-large: calc(var(--shell-g-spacing-base) / 2 * 3);
+
+--shell-g-spacing-x-large: calc(var(--shell-g-spacing-base) / 2 * 4);
+
+--shell-g-spacing-2x-large: calc(var(--shell-g-spacing-base) / 2 * 5);
+
+--shell-g-spacing-3x-large: calc(var(--shell-g-spacing-base) / 2 * 6);
+
+--shell-g-spacing-4x-large: calc(var(--shell-g-spacing-base) / 2 * 7);
+
+--shell-g-spacing-5x-large: calc(var(--shell-g-spacing-base) / 2 * 9);
+
+--shell-g-spacing-6x-large: calc(var(--shell-g-spacing-base) / 2 * 12);
+
+
+
+
+/* 5. Breakpoints (Global)
+   ========================================================================= */
+
+/**
+ * The breakdown of the breakpoints is based off this chart:
+ * http://static.lukew.com/unified_device_design.png
+ *
+ * Here's the thinking:
+ *
+ * - Palm..........smart-phones and feature phones—anything that can fit into
+ *                 the palm of a hand.
+ * - Lap...........typically tablets, notebooks and laptops—anything that is
+ *                 portable that doesn't include phones.
+ * - Lap small.....smaller tablets/notebooks and e-readers e.g. Kindle.
+ * - Lap large.....larger tablets and laptops.
+ * - Desk..........desktop computers, TVs, etc.—anything that isn't portable.
+ * - Desk large....larger desktop computer monitors, TVs, and who knows what
+ *                 else?
+ *
+ * The breakpoints:
+ *
+ * - Palm: 0–640px
+ * - Lap: 641px +
+ * - Lap small: 768px +
+ * - Lap large: 901px +
+ * - Desk: 1200px +
+ * - Desk large: 1366px +
+ *
+ * @credit
+ * http://www.lukew.com/ff/entry.asp?1679
+ */
+
+
+/**
+ * All the breakpoints divided by the default user-agent font-size setting
+ * that is non-overridable by Shell's base font size setting:
+ * `--shell-g-font-size`. We do this division as all viewport width and height
+ * media queries are to be applied with the `em` unit. See:
+ * http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/.
+ *
+ * N.B. if you wish to override any of the breakpoints then don't forget to
+ * apply this calculation:
+ *
+    ([breakpoint-value] / 16) * 1em
+ *
+ * N.B. as we're using a Sass map we need to use a Sass function to make it
+ * easier to apply the map keys, the function lives in
+ * "Mixins/Functions -> Retrieve from maps".
+ */
+
+/* --shell-g-breakpoints: (
+
+  /* Palm
+  "palm": (640 / 16) * 1em,
+
+  /* Lap
+  "lap": (641 / 16) * 1em,
+  "lap-small": (768 / 16) * 1em,
+  "lap-large": (901 / 16) * 1em,
+
+  /* Desk
+  "desk": (1200 / 16) * 1em,
+  "desk-large": (1366 / 16) * 1em
+
+); */
+
+
+/**
+ * The setting used for the default breakpoint applied to the
+ * "Mixins/Functions -> Apply at breakpoints" mixin.
+ */
+
+/* --shell-g-global-breakpoints: (lap); */
+
+
+
+
+/* 6. Z-Index system (Global)
+   ========================================================================= */
+
+/**
+ * A nice system that uses Sass maps to keep your project `z-index`s
+ * maintainable, sane, and free of those crazy `z-index: 99999;` occurrences!
+ *
+ * Be sure to read this to fully understand how the system works:
+ * http://www.sitepoint.com/better-solution-managing-z-index-sass/
+ *
+ * Shell kicks it off by providing a standard stacking order that most projects
+ * would require, you can then update the Sass map in your project "Settings"
+ * partial, be sure to use nested maps to make this system aware of stacking
+ * contexts as having a flat map will soon become a headache to maintain.
+ *
+ * Applying `z-index`s with this system is done like this:
+ *
+    .c-header {
+        z-index: z(header);
+    }
+ *
+ * And for nested stacking contexts (defined via a nested map):
+ *
+    .c-dialog__close-button {
+        z-index: z(dialog-elements, close-button);
+    }
+ *
+ * N.B. as we're using a Sass map (and nested maps) we need to use a Sass
+ * function to make it easier to apply the map keys and to be able to
+ * retrieve nested map keys. The function lives in
+ * "Mixins/Functions -> Retrieve from maps".
+ *
+ * @credit
+ * http://www.sitepoint.com/better-solution-managing-z-index-sass/
+ */
+
+
+/**
+ * Starting from highest to lowest:
+ *
+    <body>
+        <dialog>
+            <dialog-close-button>
+        <dialog-underlay>
+        <header>
+        <main>
+        <footer>
+    </body>
+ */
+
+/* --shell-g-z-layers: (
+    "dialog-elements": (
+        "close-button": 1
+    ),
+    "dialog": 5,
+    "dialog-underlay": 4,
+    "header": 3,
+    "main": 2,
+    "footer": 1,
+    "underneath": -1
+); */
+
+
+
+
+/* 7. HiDPI units (Global)
+   ========================================================================= */
+
+/**
+ * HiDPI units, currently being used in:
+ * "Mixins/Functions -> HiDPI background images".
+ *
+ * N.B. non-over-ridable.
+ */
+
+--shell-g-hidpi-dpr: 1.3;
+
+--shell-g-hidpi-dpi: calc(var(--shell-g-hidpi-dpr) * 96 * 1dpi);
+
+--shell-g-hidpi-dppx: calc(1.3 * 1dppx);
+
+
+
+
+/* 8. HTML textual `input`s (Global)
+   ========================================================================= */
+
+/* --shell-g-textual-inputs: 'input[type="text"],
+                          input[type="search"],
+                          input[type="tel"],
+                          input[type="url"],
+                          input[type="email"],
+                          input[type="password"],
+                          input[type="month"],
+                          input[type="week"],
+                          input[type="time"],
+                          input[type="date"],
+                          input[type="datetime"],
+                          input[type="datetime-local"],
+                          input[type="number"]'; */
+
+
+
+
+/* 9. Base (Local)
+   ========================================================================= */
+
+/**
+ * Booleans.
+ */
+
+--shell-base-apply-style-to-disabled-and-readonly-states: true;
+
+--shell-base-apply-bottom-margin-to-paragraphs: false;
+
+
+/**
+ * Root element.
+ */
+
+--shell-base-root-element-background-color: var(--shell-g-color-white);
+
+
+/**
+ * Links.
+ */
+
+--shell-base-link-text-decoration: underline;
+
+--shell-base-link-text-decoration-on-hover: none;
+
+
+/**
+ * Horizontal rule.
+ */
+
+--shell-base-hr-thickness: 1px;
+
+--shell-base-hr-style: solid;
+
+--shell-base-hr-color: var(--shell-g-color-text-base);
+
+
+/**
+ * Forms.
+ */
+
+--shell-base-disabled-and-readonly-state-opacity-strength: 0.6;
+
+--shell-base-target-ios-selector: '.target-ios';
+
+
+
+
+/* 10. Container (Local)
+   ========================================================================= */
+
+/**
+ * Booleans.
+ */
+
+--shell-container-apply-center-alignment: true;
+
+
+/**
+ * Widths.
+ */
+
+--shell-container-maximum-width: calc(var(--shell-g-base-number) * 100);
+
+--shell-container-minimum-width: 320;
+
+/* Size modifiers */
+--shell-container-maximum-width-x-large: calc(var(--shell-g-base-number) * 150);
+
+--shell-container-maximum-width-large: calc(var(--shell-g-base-number) * 125);
+
+--shell-container-maximum-width-small: calc(var(--shell-g-base-number) * 62.5);
+
+--shell-container-maximum-width-x-small: calc(var(--shell-g-base-number) * 42);
+
+
+/**
+ * Gutter size.
+ */
+
+--shell-container-gutter: var(--shell-g-spacing-3x-large);
+
+
+
+
+/* 11. Grid (Local)
+   ========================================================================= */
+
+/**
+ * Grid column widths.
+ */
+
+--shell-grid-1-col-width: 8.333%;
+
+--shell-grid-2-col-width: 16.666%;
+
+--shell-grid-3-col-width: 25%;
+
+--shell-grid-4-col-width: 33.333%;
+
+--shell-grid-5-col-width: 41.666%;
+
+--shell-grid-6-col-width: 50%;
+
+--shell-grid-7-col-width: 58.333%;
+
+--shell-grid-8-col-width: 66.666%;
+
+--shell-grid-9-col-width: 75%;
+
+--shell-grid-10-col-width: 83.333%;
+
+--shell-grid-11-col-width: 91.666%;
+
+}

@@ -115,6 +115,7 @@
  */
 
 
+
 /**
  * Grid container.
  *
@@ -126,7 +127,7 @@
 .l-grid {
     display: flex;
     flex-flow: row wrap;
-    margin-left: -(rem($shell-g-spacing-base)); // [1]
+    margin-left: calc(var(--shell-g-spacing-base) / var(--shell-g-font-size) * -1rem); /* [1] */
 }
 
 
@@ -141,9 +142,10 @@
  */
 
 .l-grid__item {
-    flex-basis: auto; // [1]
-    padding-left: rem($shell-g-spacing-base); // [2]
-    width: 100%; // [3]
+    flex-basis: auto; /* [1] */
+    padding-right: var(--rem);
+    padding-left: calc(var(--rem) * var(--shell-g-spacing-base)); /* [2] */
+    width: 100%; /* [3] */
 }
 
 
@@ -165,11 +167,11 @@
 
 .l-grid.l-grid--gutterless {
     margin-left: 0;
+}
 
-    > .l-grid__item {
-        padding-left: 0;
-        margin-bottom: 0;
-    }
+.l-grid.l-grid--gutterless > .l-grid__item {
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 
@@ -179,49 +181,53 @@
  * N.B. all grid gutter sizes are in "Settings -> Grid (Local)".
  */
 
-// Base
-// N.B. having to reinstate the default so that any nested grids that inherit
-// a "Gutterless" modifier can be easily reapplied
+/* Base
+ * N.B. having to reinstate the default so that any nested grids that inherit
+ * a "Gutterless" modifier can be easily reapplied
+ */
 .l-grid--gutter-horizontal-base {
-    margin-left: -(rem($shell-g-spacing-base));
-
-    > .l-grid__item {
-        padding-left:  rem($shell-g-spacing-base);
-    }
+    margin-left: calc(var(--shell-g-spacing-base)  * -1);
 }
 
-// Decrease
+.l-grid--gutter-horizontal-base > .l-grid__item {
+    padding-left:  var(--shell-g-spacing-base);
+}
+
+/* Decrease */
 .l-grid--gutter-horizontal-small {
-    margin-left: -(rem($shell-g-spacing-small));
-
-    > .l-grid__item {
-        padding-left:  rem($shell-g-spacing-small);
-    }
+    margin-left: calc(0rem - var(--shell-g-spacing-small));
 }
+
+.l-grid--gutter-horizontal-small > .l-grid__item {
+    padding-left:  var(--shell-g-spacing-small);
+}
+
 
 .l-grid--gutter-horizontal-x-small {
-    margin-left: -(rem($shell-g-spacing-x-small));
-
-    > .l-grid__item {
-        padding-left:  rem($shell-g-spacing-x-small);
-    }
+    margin-left: calc(var(--shell-g-spacing-x-small) * -1);
 }
 
-// Increase
+.l-grid--gutter-horizontal-x-small > .l-grid__item {
+    padding-left:  var(--shell-g-spacing-x-small);
+}
+
+
+/* Increase */
 .l-grid--gutter-horizontal-large {
-    margin-left: -(rem($shell-g-spacing-large));
-
-    > .l-grid__item {
-        padding-left:  rem($shell-g-spacing-large);
-    }
+    margin-left: calc(var(--shell-g-spacing-large) * -1);
 }
+
+.l-grid--gutter-horizontal-large > .l-grid__item {
+    padding-left:  var(--shell-g-spacing-large);
+}
+
 
 .l-grid--gutter-horizontal-x-large {
-    margin-left: -(rem($shell-g-spacing-x-large));
+    margin-left: calc(var(--shell-g-spacing-x-large)  * -1);
+}
 
-    > .l-grid__item {
-        padding-left:  rem($shell-g-spacing-x-large);
-    }
+.l-grid--gutter-horizontal-x-large > .l-grid__item {
+    padding-left:  var(--shell-g-spacing-x-large);
 }
 
 
@@ -231,27 +237,27 @@
  * N.B. all grid gutter sizes are in "Settings -> Grid (Local)".
  */
 
-// Base
+/* Base */
 .l-grid--gutter-vertical-base > .l-grid__item {
-    margin-bottom: rem($shell-g-spacing-base);
+    margin-bottom: var(--shell-g-spacing-base);
 }
 
-// Decrease
+/* Decrease */
 .l-grid--gutter-vertical-small > .l-grid__item {
-    margin-bottom: rem($shell-g-spacing-small);
+    margin-bottom: var(--shell-g-spacing-small);
 }
 
 .l-grid--gutter-vertical-x-small > .l-grid__item {
-    margin-bottom: rem($shell-g-spacing-x-small);
+    margin-bottom: var(--shell-g-spacing-x-small);
 }
 
-// Increase
+/* Increase */
 .l-grid--gutter-vertical-large > .l-grid__item {
-    margin-bottom: rem($shell-g-spacing-large);
+    margin-bottom: var(--shell-g-spacing-large);
 }
 
 .l-grid--gutter-vertical-x-large > .l-grid__item {
-    margin-bottom: rem($shell-g-spacing-x-large);
+    margin-bottom: var(--shell-g-spacing-x-large);
 }
 
 
@@ -259,22 +265,22 @@
  * Modifiers: alignments.
  */
 
-// Middle
+/* Middle */
 .l-grid--align-middle {
     align-items: center;
 }
 
-// Bottom
+/* Bottom */
 .l-grid--align-bottom {
     align-items: flex-end;
 }
 
-// Center
+/* Center */
 .l-grid--align-center {
     justify-content: center;
 }
 
-// Right
+/* Right */
 .l-grid--align-right {
     justify-content: flex-end;
 }
@@ -284,12 +290,12 @@
  * Modifiers: "space between" and "space around".
  */
 
-// Space between
+/* Space between */
 .l-grid--space-between {
     justify-content: space-between;
 }
 
-// Space around
+/* Space around */
 .l-grid--space-around {
     justify-content: space-around;
 }
@@ -305,7 +311,7 @@
  */
 
 .l-grid--fit .l-grid__item {
-    flex: 1 1 0%;  // [1]
+    flex: 1 1 0%;  /* [1] */
 }
 
 
@@ -324,134 +330,57 @@
  * N.B. grid column widths can be found in "Settings -> Grid (Local)".
  */
 
-// 1 col
+/* 1 col */
 .l-grid__item--1-col {
-    width: $shell-grid-1-col-width;
+    width: var(--shell-grid-1-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-1-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--1-col", $shell-grid-define-1-col-width-breakpoints) {
-        width: $shell-grid-1-col-width;
-    }
-}
-
-// 2 col
+/* 2 col */
 .l-grid__item--2-col {
-    width: $shell-grid-2-col-width;
+    width: var(--shell-grid-2-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-2-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--2-col", $shell-grid-define-2-col-width-breakpoints) {
-        width: $shell-grid-2-col-width;
-    }
-}
-
-// 3 col
+/* 3 col */
 .l-grid__item--3-col {
-    width: $shell-grid-3-col-width;
+    width: var(--shell-grid-3-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-3-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--3-col", $shell-grid-define-3-col-width-breakpoints) {
-        width: $shell-grid-3-col-width;
-    }
-}
-
-// 4 col
+/* 4 col */
 .l-grid__item--4-col {
-    width: $shell-grid-4-col-width;
+    width: var(--shell-grid-4-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-4-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--4-col", $shell-grid-define-4-col-width-breakpoints) {
-        width: $shell-grid-4-col-width;
-    }
-}
-
-// 5 col
+/* 5 col */
 .l-grid__item--5-col {
-    width: $shell-grid-5-col-width;
+    width: var(--shell-grid-5-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-5-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--5-col", $shell-grid-define-5-col-width-breakpoints) {
-        width: $shell-grid-5-col-width;
-    }
-}
-
-// 6 col
+/* 6 col */
 .l-grid__item--6-col {
-    width: $shell-grid-6-col-width;
+    width: var(--shell-grid-6-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-6-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--6-col", $shell-grid-define-6-col-width-breakpoints) {
-        width: $shell-grid-6-col-width;
-    }
-}
-
-// 7 col
+/* 7 col */
 .l-grid__item--7-col {
-    width: $shell-grid-7-col-width;
+    width: var(--shell-grid-7-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-7-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--7-col", $shell-grid-define-7-col-width-breakpoints) {
-        width: $shell-grid-7-col-width;
-    }
-}
-
-// 8 col
+/* 8 col */
 .l-grid__item--8-col {
-    width: $shell-grid-8-col-width;
+    width: var(--shell-grid-8-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-8-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--8-col", $shell-grid-define-8-col-width-breakpoints) {
-        width: $shell-grid-8-col-width;
-    }
-}
-
-// 9 col
+/* 9 col */
 .l-grid__item--9-col {
-    width: $shell-grid-9-col-width;
+    width: var(--shell-grid-9-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-9-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--9-col", $shell-grid-define-9-col-width-breakpoints) {
-        width: $shell-grid-9-col-width;
-    }
-}
-
-// 10 col
+/* 10 col */
 .l-grid__item--10-col {
-    width: $shell-grid-10-col-width;
+    width: var(--shell-grid-10-col-width);
 }
 
-// Apply at breakpoints
-@if $shell-grid-apply-10-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--10-col", $shell-grid-define-10-col-width-breakpoints) {
-        width: $shell-grid-10-col-width;
-    }
-}
-
-// 11 col
+/* 11 col */
 .l-grid__item--11-col {
-    width: $shell-grid-11-col-width;
-}
-
-// Apply at breakpoints
-@if $shell-grid-apply-11-col-width-at-breakpoints {
-    @include apply-at-breakpoints(".l-grid__item--11-col", $shell-grid-define-11-col-width-breakpoints) {
-        width: $shell-grid-11-col-width;
-    }
+    width: var(--shell-grid-11-col-width);
 }

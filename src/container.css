@@ -56,15 +56,15 @@
 
 .l-container {
     display: block; // [1]
-    max-width: rem($shell-container-maximum-width);
-    min-width: rem($shell-container-minimum-width);
-    padding-left: rem($shell-container-gutter);
-    padding-right: rem($shell-container-gutter);
+    max-width: rem(var(--shell-container-maximum-width));
+    min-width: rem(var(--shell-container-minimum-width));
+    padding-left: rem(var(--shell-container-gutter));
+    padding-right: rem(var(--shell-container-gutter));
     width: 100%;
 
-    @if $shell-container-apply-center-alignment {
+    /* @if var(--shell-container-apply-center-alignment ){
         margin: 0 auto;
-    }
+    } */
 }
 
 
@@ -73,17 +73,17 @@
  */
 
 .l-container--small {
-    max-width: rem($shell-container-maximum-width-small);
+    max-width: rem(var(--shell-container-maximum-width-small));
 }
 
 .l-container--x-small {
-    max-width: rem($shell-container-maximum-width-x-small);
+    max-width: rem(var(--shell-container-maximum-width-x-small));
 }
 
 .l-container--large {
-    max-width: rem($shell-container-maximum-width-large);
+    max-width: rem(var(--shell-container-maximum-width-large));
 }
 
 .l-container--x-large {
-    max-width: rem($shell-container-maximum-width-x-large);
+    max-width: rem(var(--shell-container-maximum-width-x-large));
 }

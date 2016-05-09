@@ -33,12 +33,12 @@
    ========================================================================= */
 
 html {
-    background: $shell-base-root-element-background-color;
-    color: $shell-g-color-text-base;
-    font-family: $shell-g-font-family-base;
-    font-size: $shell-g-font-size / 16 * 1em;
-    font-weight: $shell-g-font-weight-normal;
-    line-height: $shell-g-line-height;
+    background: var(--shell-base-root-element-background-color);
+    color: var(--shell-g-color-text-base);
+    font-family: var(--shell-g-font-family-base);
+    font-size: calc(var(--shell-g-font-size) / 16 * 1em);
+    font-weight: var(--shell-g-font-weight-normal);
+    line-height: var(--shell-g-line-height);
 }
 
 
@@ -48,13 +48,13 @@ html {
    ========================================================================= */
 
 a {
-    color: $shell-g-color-link;
-    text-decoration: $shell-base-link-text-decoration;
+    color: var(--shell-g-color-link);
+    text-decoration: var(--shell-base-link-text-decoration);
 
     &:hover,
     &:focus {
-        color: $shell-g-color-link-hover;
-        text-decoration: $shell-base-link-text-decoration-on-hover;
+        color: var(--shell-g-color-link-hover);
+        text-decoration: var(--shell-base-link-text-decoration-on-hover);
     }
 }
 
@@ -65,7 +65,7 @@ a {
    ========================================================================= */
 
 hr {
-    border-top: $shell-base-hr-thickness $shell-base-hr-style $shell-base-hr-color;
+    border-top: var(--shell-base-hr-thickness) var(--shell-base-hr-style) var(--shell-base-hr-color);
     display: block;
     height: 1px;
 }
@@ -122,10 +122,10 @@ img {
  * —https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
  */
 
-@if $shell-base-apply-style-to-disabled-and-readonly-states {
+/* @if var(--shell-base-apply-style-to-disabled-and-readonly-states ){
     :disabled,
     [readonly] {
-        opacity: $shell-base-disabled-and-readonly-state-opacity-strength;
+        opacity: var(--shell-base-disabled-and-readonly-state-opacity-strength);
     }
 }
 
@@ -137,17 +137,17 @@ img {
 
 /**
  * Apply an optional bottom margin to all paragraphs.
- */
 
-@if $shell-base-apply-bottom-margin-to-paragraphs {
+
+@if var(--shell-base-apply-bottom-margin-to-paragraphs ){
     p {
-        margin-bottom: rem($shell-g-spacing-base);
-
-        &:last-child {
-            margin-bottom: 0;
-        }
+        margin-bottom: rem(var(--shell-g-spacing-base));
+    }
+    p:last-child {
+        margin-bottom: 0;
     }
 }
+}*/
 
 
 
@@ -179,10 +179,10 @@ h3,
 h4,
 h5,
 h6 {
-    color: $shell-g-color-text-base;
-    font-size: rem($shell-g-font-size);
-    font-weight: $shell-g-font-weight-normal;
-    line-height: $shell-g-line-height;
+    color: var(--shell-g-color-text-base);
+    font-size: rem(var(--shell-g-font-size));
+    font-weight: var(--shell-g-font-weight-normal);
+    line-height: var(--shell-g-line-height);
 }
 
 
@@ -191,9 +191,9 @@ h6 {
  */
 
 .heading {
-    color: $shell-g-color-text-base;
-    font-size: rem($shell-g-font-size);
-    font-weight: $shell-g-font-weight-normal;
+    color: var(--shell-g-color-text-base);
+    font-size: rem(var(--shell-g-font-size));
+    font-weight: var(--shell-g-font-weight-normal);
 }
 
 /**
@@ -201,8 +201,8 @@ h6 {
  */
 
 .heading--main {
-    font-size: rem($shell-g-font-size-large);
-    font-weight: $shell-g-font-weight-light;
+    font-size: rem(var(--shell-g-font-size-large));
+    font-weight: var(--shell-g-font-weight-light);
 }
 
 /**
