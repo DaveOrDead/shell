@@ -55,12 +55,13 @@
  */
 
 .l-container {
-    display: block; // [1]
+    display: block; /* [1] */
     max-width: rem($shell-container-maximum-width);
     min-width: rem($shell-container-minimum-width);
     padding-left: rem($shell-container-gutter);
     padding-right: rem($shell-container-gutter);
     width: 100%;
+
 
     @if $shell-container-apply-center-alignment {
         margin: 0 auto;

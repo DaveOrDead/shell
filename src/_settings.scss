@@ -282,16 +282,16 @@ $shell-g-border-radius: 3px;
 $shell-g-breakpoints: (
 
   // Palm
-  "palm": (640 / 16) * 1em,
+  'palm': (640 / 16) * 1em,
 
   // Lap
-  "lap": (641 / 16) * 1em,
-  "lap-small": (768 / 16) * 1em,
-  "lap-large": (901 / 16) * 1em,
+  'lap': (641 / 16) * 1em,
+  'lap-small': (768 / 16) * 1em,
+  'lap-large': (901 / 16) * 1em,
 
   // Desk
-  "desk": (1200 / 16) * 1em,
-  "desk-large": (1366 / 16) * 1em
+  'desk': (1200 / 16) * 1em,
+  'desk-large': (1366 / 16) * 1em
 
 ) !default;
 
@@ -357,15 +357,15 @@ $shell-g-global-breakpoints: (lap) !default;
  */
 
 $shell-g-z-layers: (
-    "dialog-elements": (
-        "close-button": 1
+    'dialog-elements': (
+        'close-button': 1
     ),
-    "dialog": 5,
-    "dialog-underlay": 4,
-    "header": 3,
-    "main": 2,
-    "footer": 1,
-    "underneath": -1
+    'dialog': 5,
+    'dialog-underlay': 4,
+    'header': 3,
+    'main': 2,
+    'footer': 1,
+    'underneath': -1
 ) !default;
 
 

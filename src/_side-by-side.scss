@@ -73,8 +73,8 @@
 
 // The last item
 .l-side-by-side__item:last-child {
-    flex: 1 1 0%; // [1]
-    margin-left: rem($shell-g-spacing); // [2]
+    flex: 1 1 0%; /* [1] */
+    margin-left: rem($shell-g-spacing); /* [2] */
 }
 
 // Reversing the gutters for the "Reversed" modifier
